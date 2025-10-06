@@ -125,6 +125,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect after login/logout
 LOGIN_REDIRECT_URL = "list_books"
 LOGOUT_REDIRECT_URL = "login"
+LOGIN_URL = "login"
 
 # Tell Django where to find templates
 TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates"]

@@ -129,5 +129,5 @@ LOGIN_URL = "login"
 
 # Tell Django where to find templates
 TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates"]
-AUTH_USER_MODEL = 'relationship_app.CustomUser'
+AUTH_USER_MODEL = 'bookshelf.CustomUser'
 

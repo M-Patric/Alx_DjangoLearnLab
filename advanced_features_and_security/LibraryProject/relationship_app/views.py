@@ -109,3 +109,29 @@ def delete_book(request, book_id):
         book.delete()
         return redirect("list_books")
     return render(request, "relationship_app/delete_book.html", {"book": book})
+from django.contrib.auth.decorators import permission_required
+from django.shortcuts import render, redirect
+from .models import Book
+
+@permission_required('relationship_app.can_view', raise_exception=True)
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'book_list.html', {'books': books})
+
+
+@permission_required('relationship_app.can_create', raise_exception=True)
+def add_book(request):
+    # Example: Form handling code here
+    return render(request, 'add_book.html')
+
+
+@permission_required('relationship_app.can_edit', raise_exception=True)
+def edit_book(request, pk):
+    # Example: Logic to edit a book here
+    return render(request, 'edit_book.html')
+
+
+@permission_required('relationship_app.can_delete', raise_exception=True)
+def delete_book(request, pk):
+    # Example: Logic to delete a book here
+    return redirect('book_list')

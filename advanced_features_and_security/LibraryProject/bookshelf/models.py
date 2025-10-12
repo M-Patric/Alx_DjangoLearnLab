@@ -25,3 +25,19 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    publication_year = models.IntegerField()
+
+    class Meta:
+        # Define your custom permissions here
+        permissions = [
+            ("can_create", "Can create book"),
+            ("can_delete", "Can delete book"),
+            ("can_edit", "Can edit book"),
+            ("can_view", "Can view book"),
+        ]
+
+    def __str__(self):
+        return self.title

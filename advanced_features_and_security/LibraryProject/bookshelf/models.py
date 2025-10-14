@@ -29,6 +29,8 @@ class Book(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
     publication_year = models.IntegerField()
+    profile_photo = models.ImageField(upload_to="profile_photos/", null=True, blank=True)
+
 
     class Meta:
         # Define your custom permissions here
@@ -41,3 +43,10 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+# bookshelf/models.py (or where profile_photo lives)
+from django.core.exceptions import ValidationError
+
+def validate_image(file):
+    limit_mb = 5
+    if file.size > limit_mb * 1024 * 1024:
+        raise ValidationError("Image too large ( > %sMB )" % limit_mb)

@@ -18,8 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # change '/admin/' to something secret
+    path('secret-admin-7f4a2b/', admin.site.urls),
     path('', include('bookshelf.urls')),
 ]
-
-
